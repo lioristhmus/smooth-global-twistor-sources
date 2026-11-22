@@ -1,0 +1,221 @@
+{
+  "environment": {
+    "arch": "aarch64",
+    "cgroup": {
+      "cpu.max": "50000 100000",
+      "memory.max": "134217728",
+      "memory.swap.max": "0",
+      "pids.max": "32"
+    },
+    "container_config": {
+      "Memory": 134217728,
+      "MemorySwap": 134217728,
+      "NanoCpus": 500000000,
+      "NetworkMode": "none",
+      "PidsLimit": 32,
+      "ReadonlyRootfs": true
+    },
+    "existing_service_usage": [
+      "707.3MiB / 7.747GiB 0.29%",
+      "24.91MiB / 7.747GiB 0.00%",
+      "13.66MiB / 7.747GiB 0.24%",
+      "141.8MiB / 7.747GiB 0.00%"
+    ],
+    "image": "sha256:d50fb7611f86d04a3b0471b46d7557818d88983fc3136726336b2a4c657aa30b",
+    "oom_kill_enabled": true,
+    "python": "3.12.13",
+    "restart": "no",
+    "vm": {
+      "cpus": 16,
+      "memory_bytes": 8318709760
+    },
+    "wall_limit_seconds": 60
+  },
+  "pilot": {
+    "cutoff": 1,
+    "rss_kib": 16824
+  },
+  "results": {
+    "carriers": {
+      "T02": [
+        [
+          "5/13",
+          "-12/13"
+        ],
+        [
+          "12/13",
+          "5/13"
+        ]
+      ],
+      "evaluation0": [
+        [
+          "1"
+        ],
+        [
+          "-1"
+        ]
+      ],
+      "missing_inverse_detected": true,
+      "pairs": 9,
+      "raw_evaluation_detected": true,
+      "triples": 27
+    },
+    "frame": {
+      "connection_change": "3/2",
+      "fixed_map_detected": true,
+      "frame_product": [
+        "5",
+        "0"
+      ],
+      "interface_derivative": "-15/4",
+      "interface_value": "-5/2",
+      "wrong_sign_detected": true
+    },
+    "torus": [
+      {
+        "cutoff": 1,
+        "normalized_diagonal": 4,
+        "rows": [
+          [
+            -1,
+            1,
+            -1,
+            1,
+            1
+          ],
+          [
+            0,
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            1,
+            -1,
+            1
+          ]
+        ],
+        "wrong_wave_at_n1": 3
+      },
+      {
+        "cutoff": 2,
+        "normalized_diagonal": 2,
+        "rows": [
+          [
+            -2,
+            -1,
+            2,
+            -2,
+            -4
+          ],
+          [
+            -1,
+            1,
+            -1,
+            1,
+            1
+          ],
+          [
+            0,
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            1,
+            -1,
+            1
+          ],
+          [
+            2,
+            -1,
+            -2,
+            2,
+            -4
+          ]
+        ],
+        "wrong_wave_at_n1": 3
+      },
+      {
+        "cutoff": 4,
+        "normalized_diagonal": -4,
+        "rows": [
+          [
+            -4,
+            -1,
+            4,
+            -4,
+            -16
+          ],
+          [
+            -3,
+            -2,
+            6,
+            -6,
+            -18
+          ],
+          [
+            -2,
+            -1,
+            2,
+            -2,
+            -4
+          ],
+          [
+            -1,
+            1,
+            -1,
+            1,
+            1
+          ],
+          [
+            0,
+            2,
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            1,
+            1,
+            -1,
+            1
+          ],
+          [
+            2,
+            -1,
+            -2,
+            2,
+            -4
+          ],
+          [
+            3,
+            -2,
+            -6,
+            6,
+            -18
+          ],
+          [
+            4,
+            -1,
+            -4,
+            4,
+            -16
+          ]
+        ],
+        "wrong_wave_at_n1": 3
+      }
+    ]
+  },
+  "run": {
+    "elapsed_seconds": 0.001474,
+    "peak_rss_kib": 16948
+  }
+}

@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: Please cite the preprint using the preferred citation below.
+title: Global wave completion and recognition of smooth twistor sources
+type: dataset
+authors:
+- given-names: Lior
+  family-names: Isthmus
+  orcid: https://orcid.org/0009-0004-7908-9876
+version: '1.0'
+url: https://github.com/lioristhmus/smooth-global-twistor-sources/releases/tag/v1.0
+repository-code: https://github.com/lioristhmus/smooth-global-twistor-sources
+license:
+- CC-BY-4.0
+- Apache-2.0
+keywords:
+- twistor theory
+- globally hyperbolic spacetimes
+- Einstein vacuum equations
+- Cauchy evolution
+- microlocal analysis
+- spin geometry
+preferred-citation:
+  type: unpublished
+  title: Global wave completion and recognition of smooth twistor sources
+  authors:
+  - given-names: Lior
+    family-names: Isthmus
+    orcid: https://orcid.org/0009-0004-7908-9876
+  year: 2026
+  version: '1.0'
+  url: https://github.com/lioristhmus/smooth-global-twistor-sources/releases/tag/v1.0

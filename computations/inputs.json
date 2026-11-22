@@ -1,0 +1,58 @@
+{
+  "torus": {
+    "cutoffs": [
+      1,
+      2,
+      4
+    ],
+    "period": "2*pi",
+    "shift": "pi/3",
+    "wrong_spatial_frequency": 2
+  },
+  "carriers": {
+    "scales": [
+      [
+        1,
+        2
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        2,
+        4
+      ]
+    ],
+    "rotations": [
+      [
+        1,
+        0,
+        1
+      ],
+      [
+        3,
+        4,
+        5
+      ],
+      [
+        5,
+        -12,
+        13
+      ]
+    ],
+    "residue_root": [
+      2,
+      3
+    ],
+    "evaluation": [
+      2,
+      -3
+    ]
+  },
+  "frame": {
+    "u0": -2,
+    "u1": 3,
+    "f0": 5
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "title": "Global wave completion and recognition of smooth twistor sources",
+  "upload_type": "publication",
+  "publication_type": "preprint",
+  "creators": [
+    {
+      "name": "Isthmus, Lior",
+      "orcid": "0009-0004-7908-9876"
+    }
+  ],
+  "description": "We construct a global wave class for smooth globally hyperbolic vacuum spacetimes at physical scale with a specified spin structure. Its four Cauchy traces determine the class modulo globally smooth kernels. The wave class compares spacelike carriers and their point evaluations. An ordinary-pair atlas satisfying the quotient and causal tests has a unique completion up to marked full comparison. The paper also treats smooth families and the analytic comparison under its stated calibration hypotheses. The supplement records three finite exact checks of Fourier traces, carrier composition and evaluation, and a change of frame. The manuscript, documentation, inputs and results are licensed under CC BY 4.0. Executable code is licensed under Apache-2.0.",
+  "version": "1.0",
+  "language": "eng",
+  "access_right": "open",
+  "license": "cc-by-4.0",
+  "keywords": [
+    "twistor theory",
+    "globally hyperbolic spacetimes",
+    "Einstein vacuum equations",
+    "Cauchy evolution",
+    "microlocal analysis",
+    "spin geometry"
+  ]
+}
