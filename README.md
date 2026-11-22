@@ -8,7 +8,7 @@ We construct a global wave class for smooth globally hyperbolic vacuum spacetime
 
 ## Version 1.0 distribution
 
-The [planned GitHub release](https://github.com/lioristhmus/smooth-global-twistor-sources/releases/tag/v1.0) groups the following files. This package is prepared for deposit. A Zenodo version DOI has yet to be assigned.
+The [GitHub release](https://github.com/lioristhmus/smooth-global-twistor-sources/releases/tag/v1.0) groups the following files. A Zenodo version DOI has yet to be assigned.
 
 | Release file | Contents |
 |---|---|

@@ -1,9 +1,10 @@
 {
   "title": "Global wave completion and recognition of smooth twistor sources",
   "package_version": "1.0",
-  "status": "prepared locally",
-  "metadata_updated_utc": "2026-11-22T14:47:57Z",
-  "planned_github_release": "https://github.com/lioristhmus/smooth-global-twistor-sources/releases/tag/v1.0",
+  "status": "published on GitHub",
+  "metadata_updated_utc": "2026-11-22T15:01:10Z",
   "zenodo_version_doi": null,
-  "zenodo_concept_doi": null
+  "zenodo_concept_doi": null,
+  "github_published_utc": "2026-11-22T15:01:10Z",
+  "github_release": "https://github.com/lioristhmus/smooth-global-twistor-sources/releases/tag/v1.0"
 }
