@@ -1,10 +1,22 @@
 {
   "title": "Global wave completion and recognition of smooth twistor sources",
   "package_version": "1.0",
-  "status": "published on GitHub",
-  "metadata_updated_utc": "2026-11-22T15:01:10Z",
-  "zenodo_version_doi": null,
-  "zenodo_concept_doi": null,
+  "status": "published on GitHub, Zenodo and Hexagon",
+  "metadata_updated_utc": "2026-11-23T21:29:31Z",
+  "zenodo_version_doi": "10.5281/zenodo.24443685",
+  "zenodo_concept_doi": "10.5281/zenodo.24443684",
   "github_published_utc": "2026-11-22T15:01:10Z",
-  "github_release": "https://github.com/lioristhmus/smooth-global-twistor-sources/releases/tag/v1.0"
+  "github_release": "https://github.com/lioristhmus/smooth-global-twistor-sources/releases/tag/v1.0",
+  "hexagon": {
+    "version": 1,
+    "status": "published",
+    "url": "https://hexagonmath.org/2611.00888v1",
+    "published_utc": "2026-11-23T20:26:54.460Z",
+    "bibliography": {
+      "url": "https://hexagonmath.org/2611.00888v1#bibliography",
+      "entries": 27,
+      "matched_in_manuscript_order": 27,
+      "urls_in_reference_text": 51
+    }
+  }
 }
