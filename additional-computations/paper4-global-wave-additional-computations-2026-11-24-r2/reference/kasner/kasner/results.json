@@ -1,0 +1,99 @@
+{
+  "mode_files": [
+    "mode-00.json",
+    "mode-01.json",
+    "mode-02.json",
+    "mode-03.json",
+    "mode-04.json",
+    "mode-05.json",
+    "mode-06.json",
+    "mode-07.json",
+    "mode-08.json",
+    "mode-09.json",
+    "mode-10.json",
+    "mode-11.json",
+    "mode-12.json",
+    "mode-13.json",
+    "mode-14.json",
+    "mode-15.json",
+    "mode-16.json",
+    "mode-17.json",
+    "mode-18.json",
+    "mode-19.json",
+    "mode-20.json",
+    "mode-21.json",
+    "mode-22.json",
+    "mode-23.json",
+    "mode-24.json",
+    "mode-25.json",
+    "mode-26.json",
+    "mode-27.json",
+    "mode-28.json",
+    "mode-29.json",
+    "mode-30.json",
+    "mode-31.json",
+    "mode-32.json",
+    "mode-33.json",
+    "mode-34.json",
+    "mode-35.json",
+    "mode-36.json",
+    "mode-37.json",
+    "mode-38.json",
+    "mode-39.json",
+    "mode-40.json",
+    "mode-41.json",
+    "mode-42.json",
+    "mode-43.json",
+    "mode-44.json",
+    "mode-45.json",
+    "mode-46.json",
+    "mode-47.json"
+  ],
+  "max_errors": [
+    0.0005452618060788339,
+    3.251048129188427e-05,
+    2.04348718171104e-06
+  ],
+  "observed_orders": [
+    4.067972283368436,
+    3.9917998153109964
+  ],
+  "controls": {
+    "dropped": {
+      "mixed": 0.39369450797967265,
+      "diagonal": 0.39369450797967254,
+      "normalizer": 1.860261043367001,
+      "phase": 4.47545209131181e-16,
+      "evaluation": 1.4304896245381992e-17,
+      "charge": 0.0,
+      "physical_traces": 2.5239593139577887
+    },
+    "reversed": {
+      "mixed": 0.8838125459015405,
+      "diagonal": 0.0,
+      "normalizer": 0.0,
+      "phase": 1.9999494799231603,
+      "evaluation": 0.05941633794555436,
+      "charge": 2.0000000000000004,
+      "physical_traces": 9.590776624249333
+    }
+  },
+  "pilot": {
+    "mixed": 1.2223679513034824e-08,
+    "diagonal": 1.2223679402012522e-08,
+    "normalizer": 2.5453359198124303e-08,
+    "phase": 8.249781155265622e-09,
+    "evaluation": 2.9919245757515336e-10,
+    "charge": 1.0158296426254765e-09,
+    "physical_traces": 3.127279223342767e-08,
+    "kg_unit": 1.0158296426254765e-09
+  },
+  "python": "3.12.13",
+  "max_identities": [
+    6.714259482987136e-16,
+    1.5700924586837752e-16,
+    2.7755575615628914e-17,
+    3.3306690738754696e-16
+  ],
+  "passed": true
+}

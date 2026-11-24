@@ -2,7 +2,7 @@
 
 Manuscript version 1.0 · 22 November 2026
 
-Three finite calculations test signs and normalizations used in the [paper](../paper/smooth-global-twistor-sources-en-v1.0.md). All equalities are evaluated over integers, a quadratic ring or rational numbers. The [inputs](inputs.json), [calculations](check.py) and [recorded output](results/verified.json) accompany this guide. The code was written for this paper. It imports neither the local manuscript's computations nor their recorded results.
+Three finite calculations test signs and normalizations used in the [paper](../paper/smooth-global-twistor-sources-en-v1.1.md). All equalities are evaluated over integers, a quadratic ring or rational numbers. The [inputs](inputs.json), [calculations](check.py) and [recorded output](results/verified.json) accompany this guide. The code was written for this paper. It imports neither the local manuscript's computations nor their recorded results.
 
 ## 1. Translated kernels on the flat torus (Example 4.7)
 

@@ -1,0 +1,37 @@
+[
+  {
+    "name": "kasner/kasner",
+    "source": "kasner",
+    "entry": "kasner",
+    "script": "kasner.py",
+    "inputs": {}
+  },
+  {
+    "name": "kasner/return_paths",
+    "source": "kasner",
+    "entry": "return_paths",
+    "script": "return_paths.py",
+    "inputs": {}
+  },
+  {
+    "name": "wave/waves",
+    "source": "wave",
+    "entry": "waves",
+    "script": "experiment.py",
+    "inputs": {}
+  },
+  {
+    "name": "wave/curved",
+    "source": "wave",
+    "entry": "local",
+    "script": "experiment.py",
+    "inputs": {}
+  },
+  {
+    "name": "wave/atlas-traces",
+    "source": "wave",
+    "entry": "atlas",
+    "script": "experiment.py",
+    "inputs": {}
+  }
+]

@@ -116,11 +116,35 @@
 
 % Reduce avoidable overfull lines without changing the source manuscript.
 \setlength{\emergencystretch}{2em}
-% Match amsart's theorem preskip while keeping Markdown statement bodies roman.
+% Use natural vertical spacing on AMS pages and place surplus depth at the foot.
+\raggedbottom
 \makeatletter
+% Retain the native section command (including its labels, TOC and numbering).
+% Change only the afterskip of the next run-in heading.
+\newcommand{\paperdisplaynext}{%
+  \let\paper@savedstartsection\@startsection
+  \def\@startsection##1##2##3##4##5##6{%
+    \let\@startsection\paper@savedstartsection
+    \@tempskipa ##5\relax
+    \ifdim\@tempskipa<\z@
+      \def\paper@afterskip{.35\baselineskip}%
+    \else
+      \def\paper@afterskip{##5}%
+    \fi
+    \@startsection{##1}{##2}{##3}{##4}{\paper@afterskip}{##6}}}
+\newcommand{\paperdisplaysection}{\paperdisplaynext\subsection}
+\newcommand{\paperleadspace}{%
+  \par\if@nobreak\else
+    \addpenalty{\@secpenalty}\addvspace{.5\baselineskip}%
+  \fi}
+\newcommand{\paperleadin}[1]{%
+  \ifvmode\paperleadspace\fi
+  \textbf{#1}}
 \newcommand{\pandocstatementheading}[1]{%
-  \par\addpenalty{\@beginparpenalty}%
-  \addvspace{.5\baselineskip plus .2\baselineskip minus .2\baselineskip}%
+  \par\if@nobreak\else
+    \addpenalty{\@beginparpenalty}%
+    \addvspace{.5\baselineskip plus .2\baselineskip minus .2\baselineskip}%
+  \fi
   {\normalfont\bfseries #1\par}%
   \nobreak\@afterindenttrue\@afterheading
 }
@@ -187,24 +211,14 @@
 \author[Lior Isthmus]{Lior Isthmus\textsuperscript{1}}
 \date{2026-11-22}
 
-% Keep surplus page depth at the foot instead of stretching theorem and display skips.
 \usepackage{needspace}
-\raggedbottom
 \newcommand{\paperblockheading}[2][.45\baselineskip]{%
   \par\Needspace{6\baselineskip}%
   \addvspace{\baselineskip}%
   \noindent{\normalfont\bfseries #2}\par\nobreak
   \vskip#1\relax\nobreak
 }
-% Independent subsection and statement headings use a single positive afterskip.
-\makeatletter
-\newcommand{\paperstatementsection}{\@startsection{subsection}{2}%
-  \z@{.5\linespacing\@plus.7\linespacing}{.35\baselineskip}%
-  {\normalfont\bfseries}}
-\newcommand{\paperfirststatement}[1]{%
-  {\normalfont\bfseries #1\par}%
-  \nobreak\@afterindenttrue\@afterheading}
-\makeatother
+\hypersetup{pdfsubject={Paper 4, version 1.1}}
 \begin{document}
 \begin{abstract}
 \phantomsection\label{sec:abstract}
@@ -490,8 +504,8 @@ constructions proved here. The analytic inputs are stated separately in
 
 \Needspace{5.5\baselineskip}
 \protect\phantomsection\label{sec:overview-main-results}
-\paperstatementsection{1.2. Main results}\label{main-results}
-\paperfirststatement{\protect\phantomsection\label{thm:global-wave-completion-overview}Theorem 1.1 (Geometric and wave completion on a fixed background).}
+\paperdisplaysection{1.2. Main results}\label{main-results}
+\pandocstatementheading{\protect\phantomsection\label{thm:global-wave-completion-overview}Theorem 1.1 (Geometric and wave completion on a fixed background).}
 
 Let \((M,g)\) be a smooth globally hyperbolic oriented and time-oriented
 Ricci-flat Lorentzian four-manifold, with an actual spin structure. With
@@ -900,9 +914,9 @@ shadows control the support needed for this transposition.
 
 \Needspace{5.5\baselineskip}
 \protect\phantomsection\label{sec:support-and-distributional-evolution}
-\paperstatementsection{2.1. Compact support control and distributional
+\paperdisplaysection{2.1. Compact support control and distributional
 evolution}\label{compact-support-control-and-distributional-evolution}
-\paperfirststatement{\protect\phantomsection\label{lem:compact-cauchy-shadows}Lemma 2.1 (Compact Cauchy shadows and propagation strips).}
+\pandocstatementheading{\protect\phantomsection\label{lem:compact-cauchy-shadows}Lemma 2.1 (Compact Cauchy shadows and propagation strips).}
 
 For every compact \(K\subset M\) and every spacelike Cauchy hypersurface
 \(\Sigma\), the sets \[
@@ -1046,9 +1060,9 @@ all of \(M\). ∎
 
 \Needspace{5.5\baselineskip}
 \protect\phantomsection\label{sec:smooth-and-passive-regularity}
-\paperstatementsection{2.2. Smooth forcing and passive
+\paperdisplaysection{2.2. Smooth forcing and passive
 variables}\label{smooth-forcing-and-passive-variables}
-\paperfirststatement{\protect\phantomsection\label{lem:smooth-noncompact-cauchy}Lemma 2.5 (Smooth data and forcing without support assumptions).}
+\pandocstatementheading{\protect\phantomsection\label{lem:smooth-noncompact-cauchy}Lemma 2.5 (Smooth data and forcing without support assumptions).}
 
 For arbitrary smooth Cauchy data and arbitrary smooth forcing \(f\) on
 \(M\), the Cauchy problem \(Pu=f\) has a unique smooth solution. On
@@ -1111,9 +1125,9 @@ compact coordinate supports. Hence \(z=0\). ∎
 
 \Needspace{5.5\baselineskip}
 \protect\phantomsection\label{sec:double-cauchy-evolution}
-\paperstatementsection{2.3. Double Cauchy evolution and
+\paperdisplaysection{2.3. Double Cauchy evolution and
 smoothing}\label{double-cauchy-evolution-and-smoothing}
-\paperfirststatement{\protect\phantomsection\label{lem:global-double-cauchy-smoothing}Lemma 2.7 (Global double-Cauchy smoothing).}
+\pandocstatementheading{\protect\phantomsection\label{lem:global-double-cauchy-smoothing}Lemma 2.7 (Global double-Cauchy smoothing).}
 
 Let \(D\in\mathcal D'(M\times M)\) satisfy \[
 P_pD,\ P_qD\in C^\infty(M\times M).
@@ -1218,9 +1232,9 @@ domains needed by the global source comparisons.
 
 \Needspace{5.5\baselineskip}
 \protect\phantomsection\label{sec:null-rays-and-affine-domains}
-\paperstatementsection{3.1. Rays, contact structure, and affine
+\paperdisplaysection{3.1. Rays, contact structure, and affine
 normalization}\label{rays-contact-structure-and-affine-normalization}
-\paperfirststatement{\protect\phantomsection\label{def:global-null-ray-data}Definition 3.1 (Null phase and rays).}
+\pandocstatementheading{\protect\phantomsection\label{def:global-null-ray-data}Definition 3.1 (Null phase and rays).}
 
 Let \(F\) be the bundle of future null tangent lines, equivalently the
 positive projectivization of the past null covectors through
@@ -1417,9 +1431,9 @@ fix its use in the retained source domains.
 
 \Needspace{5.5\baselineskip}
 \protect\phantomsection\label{sec:causal-restriction-and-geometric-comparison}
-\paperstatementsection{3.2. Causal restriction and geometric
+\paperdisplaysection{3.2. Causal restriction and geometric
 comparison}\label{causal-restriction-and-geometric-comparison}
-\paperfirststatement{\protect\phantomsection\label{lem:common-cauchy-causal-convexity}Lemma 3.5 (A common Cauchy hypersurface gives causal convexity).}
+\pandocstatementheading{\protect\phantomsection\label{lem:common-cauchy-causal-convexity}Lemma 3.5 (A common Cauchy hypersurface gives causal convexity).}
 
 Let \(U\subset M\) be open, and suppose a hypersurface \(S\subset U\) is
 Cauchy both for \(U\) and for \(M\). Then \(U\) is causally convex in
@@ -1753,9 +1767,9 @@ integral operators.
 
 \Needspace{5.5\baselineskip}
 \protect\phantomsection\label{sec:p4-canonical-global-kernel}
-\paperstatementsection{4.3. Construction and independent
+\paperdisplaysection{4.3. Construction and independent
 characterization}\label{construction-and-independent-characterization}
-\paperfirststatement{\protect\phantomsection\label{thm:p4-global-canonical-wave-class}Theorem 4.4 (Canonical global wave class).}
+\pandocstatementheading{\protect\phantomsection\label{thm:p4-global-canonical-wave-class}Theorem 4.4 (Canonical global wave class).}
 
 There is exactly one class \[
 [\Lambda_g^+]\in\mathcal D'(M\times M)/C^\infty(M\times M)
@@ -1908,9 +1922,9 @@ resulting classes. ∎
 
 \Needspace{5.5\baselineskip}
 \protect\phantomsection\label{sec:whole-cauchy-condition}
-\paperstatementsection{4.4. The role of the whole Cauchy
+\paperdisplaysection{4.4. The role of the whole Cauchy
 condition}\label{the-role-of-the-whole-cauchy-condition}
-\paperfirststatement{\protect\phantomsection\label{ex:torus-remote-bisolution}Example 4.7 (A symmetric remote bisolution).}
+\pandocstatementheading{\protect\phantomsection\label{ex:torus-remote-bisolution}Example 4.7 (A symmetric remote bisolution).}
 
 Take \[
 M=\mathbb R_t\times T^3,\qquad
@@ -2370,9 +2384,9 @@ below.
 
 \Needspace{5.5\baselineskip}
 \protect\phantomsection\label{sec:global-cartan-base}
-\paperstatementsection{6.1. The unmarked Cartan
+\paperdisplaysection{6.1. The unmarked Cartan
 base}\label{the-unmarked-cartan-base}
-\paperfirststatement{\protect\phantomsection\label{def:global-cartan-base}Definition 6.1 (Global vacuum Cartan data).}
+\pandocstatementheading{\protect\phantomsection\label{def:global-cartan-base}Definition 6.1 (Global vacuum Cartan data).}
 
 Let \(M\) be a connected oriented smooth four-manifold. The data consist
 of an oriented and time-oriented real rank-four bundle
@@ -2501,9 +2515,9 @@ ordinary-pair presentation, not to the global Cartan base.
 
 \Needspace{5.5\baselineskip}
 \protect\phantomsection\label{sec:global-independent-incidence}
-\paperstatementsection{6.2. Independent full
+\paperdisplaysection{6.2. Independent full
 incidence}\label{independent-full-incidence}
-\paperfirststatement{\protect\phantomsection\label{def:global-independent-incidence}Definition 6.3 (Global incidence admission).}
+\pandocstatementheading{\protect\phantomsection\label{def:global-independent-incidence}Definition 6.3 (Global incidence admission).}
 
 Over the data of Definition 6.1, supply a cooriented contact
 five-manifold \((Z,\mathcal H)\) and smooth maps
@@ -2784,9 +2798,9 @@ one point would not provide the same conclusion.
 
 \Needspace{5.5\baselineskip}
 \protect\phantomsection\label{sec:global-independent-scalar-admission}
-\paperstatementsection{6.4. Independent scalar wave data and
+\paperdisplaysection{6.4. Independent scalar wave data and
 recovery}\label{independent-scalar-wave-data-and-recovery}
-\paperfirststatement{\protect\phantomsection\label{def:global-independent-scalar-wave}Definition 6.7 (Independent global scalar wave class).}
+\pandocstatementheading{\protect\phantomsection\label{def:global-independent-scalar-wave}Definition 6.7 (Independent global scalar wave class).}
 
 Over Definitions 6.1 and 6.3, supply a scalar class \[
 [\Lambda]\in\mathcal D'(M\times M)/C^\infty(M\times M)
@@ -3341,9 +3355,9 @@ normalization on all small point squares alone would not exclude Example
 
 \Needspace{5.5\baselineskip}
 \protect\phantomsection\label{sec:global-full-hom-proof}
-\paperstatementsection{7.3. The global full Hom
+\paperdisplaysection{7.3. The global full Hom
 theorem}\label{the-global-full-hom-theorem}
-\paperfirststatement{\protect\phantomsection\label{prop:global-native-isometry-lift}Proposition 7.6 (Native lift of a global isometry).}
+\pandocstatementheading{\protect\phantomsection\label{prop:global-native-isometry-lift}Proposition 7.6 (Native lift of a global isometry).}
 
 Let \(f:(M_0,g_0)\to(M_1,g_1)\) be an orientation- and
 time-orientation-preserving global isometry. Choose whole Cauchy
@@ -4049,9 +4063,9 @@ alone is not an arrow.
 
 \Needspace{5.5\baselineskip}
 \protect\phantomsection\label{sec:global-source-restriction-coherence}
-\paperstatementsection{9.1. Coherent restriction of complete
+\paperdisplaysection{9.1. Coherent restriction of complete
 records}\label{coherent-restriction-of-complete-records}
-\paperfirststatement{\protect\phantomsection\label{def:global-admissible-source-open}Definition 9.1 (Admissible open restriction).}
+\pandocstatementheading{\protect\phantomsection\label{def:global-admissible-source-open}Definition 9.1 (Admissible open restriction).}
 
 Let \(S\) be a global normalized full source with recognized point
 manifold \(M\). An \emph{admissible open} is a nonempty connected open
@@ -4177,9 +4191,9 @@ give the claimed full isomorphism. ∎
 
 \Needspace{5.5\baselineskip}
 \protect\phantomsection\label{sec:global-source-embedding-hom}
-\paperstatementsection{9.2. The embedding category and its full Hom
+\paperdisplaysection{9.2. The embedding category and its full Hom
 theorem}\label{the-embedding-category-and-its-full-hom-theorem}
-\paperfirststatement{\protect\phantomsection\label{def:global-full-source-open-embedding}Definition 9.3 (Full open comparison).}
+\pandocstatementheading{\protect\phantomsection\label{def:global-full-source-open-embedding}Definition 9.3 (Full open comparison).}
 
 The objects of \(\mathsf{FullSrc}^{\infty,\mathrm{cc}}_{\mathrm{GH},0}\)
 are those of Definition 7.1. A \emph{full open comparison}
@@ -4356,9 +4370,9 @@ inverse full comparison. ∎
 
 \Needspace{5.5\baselineskip}
 \protect\phantomsection\label{sec:global-source-cauchy-embeddings}
-\paperstatementsection{9.3. Cauchy carriers and retained spacetime
+\paperdisplaysection{9.3. Cauchy carriers and retained spacetime
 domains}\label{cauchy-carriers-and-retained-spacetime-domains}
-\paperfirststatement{\protect\phantomsection\label{cor:global-cauchy-source-carriers}Corollary 9.5 (Cauchy comparisons and domain information).}
+\pandocstatementheading{\protect\phantomsection\label{cor:global-cauchy-source-carriers}Corollary 9.5 (Cauchy comparisons and domain information).}
 
 A Cauchy arrow induces a contact diffeomorphism of the entire ray spaces
 and an invertible comparison of the entire native Cauchy carrier
@@ -4731,7 +4745,7 @@ The representatives cover the prescribed domain of the physical and spin
 maps; the retained neighborhoods may vary across it.
 
 \emph{Proof.} At any \(p\in D\), re-mark the restricted source and
-target displays at \(p\) and \(f(p)\). These spacetime marks are
+target displays at \(p\) and \(f(p)\) as in Paper 3, Definition 7.7. These spacetime marks are
 auxiliary presentation labels; the whole pairs, their initial readouts
 and the retained parent fields are unchanged. Restrict \(f\) and its
 spin lift to sufficiently small common isometric neighborhoods and then
@@ -4760,9 +4774,9 @@ on evaluations at individual points. ∎
 
 \Needspace{5.5\baselineskip}
 \protect\phantomsection\label{sec:ordinary-atlas-records}
-\paperstatementsection{11.2. The atlas records and the quotient
+\paperdisplaysection{11.2. The atlas records and the quotient
 tests}\label{the-atlas-records-and-the-quotient-tests}
-\paperfirststatement{\protect\phantomsection\label{def:global-ordinary-pair-atlas}Definition 11.2 (Globally admitted ordinary-pair atlas).}
+\pandocstatementheading{\protect\phantomsection\label{def:global-ordinary-pair-atlas}Definition 11.2 (Globally admitted ordinary-pair atlas).}
 
 An ordinary-pair atlas \(\mathcal P\) consists of executed charts and
 overlap comparisons satisfying the following local and global
@@ -4894,9 +4908,9 @@ affine origins are compared by their specified changes. ∎
 
 \Needspace{5.5\baselineskip}
 \protect\phantomsection\label{sec:ordinary-atlas-arrows-descent}
-\paperstatementsection{11.3. Arrows and effective
+\paperdisplaysection{11.3. Arrows and effective
 descent}\label{arrows-and-effective-descent}
-\paperfirststatement{\protect\phantomsection\label{def:ordinary-atlas-embedding-category}Definition 11.4 (Atlas comparisons).}
+\pandocstatementheading{\protect\phantomsection\label{def:ordinary-atlas-embedding-category}Definition 11.4 (Atlas comparisons).}
 
 Let \(\mathsf{PairAtl}^{\infty,\mathrm{cc}}_{\mathrm{GH},0}\) have the
 atlases of Definition 11.2 as objects. An arrow
@@ -5030,14 +5044,14 @@ For arrows, the compatible local point maps already cover the stipulated
 admissible global map. Their actual spin maps glue by their transition
 equations. Theorem 11.5 gives the unique full atlas lift of that map and
 spin lift; its restriction agrees with every supplied local arrow by
-Lemma 11.1. ∎
+Lemma 11.1.\nobreak\kern1em∎
 
 \protect\phantomsection\label{sec:ordinary-atlas-coverage}
 
-\subsection{11.4. Coverage and the geometric
+\paperdisplaysection{11.4. Coverage and the geometric
 equivalence}\label{coverage-and-the-geometric-equivalence}
 
-\emph{Common causal neighborhoods.} Let a physical isometry identify
+\paperleadin{Common causal neighborhoods.} Let a physical isometry identify
 open point neighborhoods in two globally hyperbolic spacetimes. Around a
 chosen point, take a causally convex target neighborhood inside the
 image, then a causally convex source neighborhood inside its preimage,
@@ -6350,6 +6364,7 @@ incompatible limits along nearby paths to \((0,p,p)\). Thus joint
 admission, rather than merely fiberwise admission and weak smoothness,
 is essential. ∎
 
+\Needspace{5\baselineskip}
 \protect\phantomsection\label{sec:parameter-family-correspondence}
 
 \section{14. Families of full comparisons and ordinary-pair
@@ -7533,9 +7548,9 @@ not part of an object of this category.
 
 \Needspace{5.5\baselineskip}
 \protect\phantomsection\label{sec:unmarked-analytic-source-category}
-\paperstatementsection{15.1. Extension objects and whole-real
+\paperdisplaysection{15.1. Extension objects and whole-real
 germs}\label{extension-objects-and-whole-real-germs}
-\paperfirststatement{\protect\phantomsection\label{def:unmarked-analytic-source-germs}Definition 15.1 (Unmarked analytic source germs).}
+\pandocstatementheading{\protect\phantomsection\label{def:unmarked-analytic-source-germs}Definition 15.1 (Unmarked analytic source germs).}
 
 An analytic extension source is one of the independently admitted
 holomorphic source atlases, operator monodromy sources or geometric
@@ -7815,9 +7830,9 @@ sources in §6--§7.
 
 \Needspace{5.5\baselineskip}
 \protect\phantomsection\label{sec:analytic-source-real-restriction}
-\paperstatementsection{15.2. Real restriction and intrinsic real
+\paperdisplaysection{15.2. Real restriction and intrinsic real
 rays}\label{real-restriction-and-intrinsic-real-rays}
-\paperfirststatement{\protect\phantomsection\label{prop:analytic-source-real-point-restriction}Proposition 15.4 (Restriction of the real point domain).}
+\pandocstatementheading{\protect\phantomsection\label{prop:analytic-source-real-point-restriction}Proposition 15.4 (Restriction of the real point domain).}
 
 Let \(\mathcal A\) be an analytic source germ over \(M\), and let
 \(U\subset M\) be a connected causally convex globally hyperbolic open
@@ -8077,9 +8092,9 @@ with its actual scale and spin structure.
 
 \Needspace{5.5\baselineskip}
 \protect\phantomsection\label{sec:analytic-wave-completion-data}
-\paperstatementsection{16.1. Local interfaces with a global
+\paperdisplaysection{16.1. Local interfaces with a global
 target}\label{local-interfaces-with-a-global-target}
-\paperfirststatement{\protect\phantomsection\label{def:analytic-admitted-wave-completion}Definition 16.1 (An admitted analytic wave completion).}
+\pandocstatementheading{\protect\phantomsection\label{def:analytic-admitted-wave-completion}Definition 16.1 (An admitted analytic wave completion).}
 
 Let \(\mathcal A\) belong to
 \(\mathsf{AnOp}^{\mathrm{germ},\mathrm{cc}}_{\mathrm{GH},0}\), and put
@@ -8285,9 +8300,9 @@ independent of the auxiliary choices. ∎
 
 \Needspace{5.5\baselineskip}
 \protect\phantomsection\label{sec:analytic-interface-descent}
-\paperstatementsection{16.2. Root calibration, stored descent and
+\paperdisplaysection{16.2. Root calibration, stored descent and
 reality}\label{root-calibration-stored-descent-and-reality}
-\paperfirststatement{\protect\phantomsection\label{prop:analytic-calibrated-interface-descent}Proposition 16.3 (Descent of calibrated interfaces and stored cells).}
+\pandocstatementheading{\protect\phantomsection\label{prop:analytic-calibrated-interface-descent}Proposition 16.3 (Descent of calibrated interfaces and stored cells).}
 
 Apply Lemma 16.2 on a real point refinement of the actual whole-sky
 models of \(\mathcal A\). Their interfaces form a compatible system over
@@ -8494,9 +8509,9 @@ these simultaneous presentations, as in Paper 3, Theorem 9.7 and Paper
 
 \Needspace{5.5\baselineskip}
 \protect\phantomsection\label{sec:analytic-wave-global-equivalence}
-\paperstatementsection{16.3. Global completion, restrictions and
+\paperdisplaysection{16.3. Global completion, restrictions and
 families}\label{global-completion-restrictions-and-families}
-\paperfirststatement{\protect\phantomsection\label{thm:global-analytic-wave-comparison}Theorem 16.4 (Global comparison on the analytic locus).}
+\pandocstatementheading{\protect\phantomsection\label{thm:global-analytic-wave-comparison}Theorem 16.4 (Global comparison on the analytic locus).}
 
 Under the \hyperref[sec:analytic-interface-input-contract]{inputs for
 the analytic comparison}, with the calibrated local counits and physical
@@ -9026,15 +9041,27 @@ require additional results on gravitational variations, gauge
 equivalence, the relevant symplectic or Poisson structures, and their
 compatibility with the source correspondence.
 
-\textbf{Computational supplement.} The
+\paperleadin{Computational supplement.} The
 \href{../computations/README.md}{supplement guide} gives exact finite
 checks for the translated Fourier modes in Example 4.7, the carrier and
 evaluation identities in Theorems 5.3 and 5.5, and the change of frame
 in Lemma 16.2. The guide records the inputs, negative controls and
 limits of each check. The version 1.0 supplement is
 \href{https://github.com/lioristhmus/smooth-global-twistor-sources/releases/download/v1.0/smooth-global-twistor-sources-computations-v1.0.zip}{smooth-global-twistor-sources-computations-v1.0.zip}.
-The release is planned at
+The version 1.0 release is available at
 \url{https://github.com/lioristhmus/smooth-global-twistor-sources/releases/tag/v1.0}.
+
+On a Kasner torus we compare scalar transport between Cauchy surfaces
+with axis-mode Hankel solutions. At an off-surface point the evaluation
+error against Hankel is \(2.41\times10^{-8}\), and the covariance
+residual within the numerical transport is \(3.08\times10^{-9}\).
+Localized frequency tests distinguish the two time branches, and
+pairings with smooth tests detect the translated singularities of
+Example 4.7. A final experiment compares three scalar presentations on
+overlapping Kasner slabs. The
+\href{../additional-computations/paper4-global-wave-additional-computations-2026-11-24-r2/README.md}{additional
+supplement guide} accompanies
+\href{https://github.com/lioristhmus/smooth-global-twistor-sources/releases/download/v1.1/paper4-global-wave-additional-computations-2026-11-24-r2.zip}{paper4-global-wave-additional-computations-2026-11-24-r2.zip}.
 
 \protect\phantomsection\label{sec:googly-literature-scope}
 
@@ -9526,8 +9553,10 @@ noncompact initial data.
 AI systems were used extensively throughout this research and the
 preparation of this manuscript. The models used were GPT-6 Pro,
 gpt-6.2-astra (high), Claude Fable 5.2 (xhigh), Claude Opus 5.5 (xhigh),
-and Gemini 4 Carbon (high). The computational supplement records the
-exact finite checks performed with the Python standard library.
+and Gemini 4 Carbon (high). We used Python for the exact finite checks and for numerical experiments
+on wave propagation and transport. The computational supplements
+document the software versions, execution environments, and reproduction
+steps.
 
 \protect\phantomsection\label{sec:references}
 
